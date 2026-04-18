@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix France TikTok — Geoffrey Moreno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ══ PAGE PROJET — LAYOUT ══ */
+    .header-pill {
+      width: 70% !important;
+      max-width: 860px !important;
+      margin: 12px auto 0 !important;
+      padding: 6px 20px !important;
+      background: rgba(10, 10, 30, 0.55) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .header-pill .header-logo {
+      font-size: 18px !important;
+    }
+    .header-pill .nav-link {
+      font-size: 14px !important;
+    }
+    .header-pill .social-link svg {
+      width: 19px !important;
+      height: 19px !important;
+    }
+    .projet-hero {
+      width: 100%;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .projet-main {
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 100px;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+    }
+
+    /* 1. HERO BANNER */
+    .projet-hero {
+      width: 100%;
+      min-height: 42vh;
+      height: 42vh;
+      background-color: #080810;
+      box-shadow:
+        inset 0 0 60px rgba(229, 9, 20, 0.25),
+        inset 0 0 120px rgba(229, 9, 20, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Fond Neon Netflix à 60% */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/brand-projects/Les-contenus-annon%C3%A7ant-les-s%C3%A9ries-et-films/Neon-netflix-.jpg') center/cover no-repeat;
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    /* Bulles */
+    .hero-bubbles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(229, 9, 20, 0.7);
+      box-shadow:
+        0 0 12px rgba(229, 9, 20, 0.8),
+        0 0 28px rgba(229, 9, 20, 0.4),
+        0 0 50px rgba(229, 9, 20, 0.15);
+    }
+    .bubble img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* 8 bulles de tailles et positions variées */
+    .bubble:nth-child(1) { width: 120px; height: 120px; top:  8%; left:  3%; }
+    .bubble:nth-child(2) { width:  85px; height:  85px; top: 55%; left:  8%; }
+    .bubble:nth-child(3) { width: 100px; height: 100px; top: 60%; left: 22%; }
+    .bubble:nth-child(4) { width:  70px; height:  70px; top:  5%; left: 28%; }
+    .bubble:nth-child(5) { width: 115px; height: 115px; top:  6%; right: 4%; }
+    .bubble:nth-child(6) { width:  90px; height:  90px; top: 50%; right: 3%; }
+    .bubble:nth-child(7) { width: 105px; height: 105px; top: 55%; right: 20%; }
+    .bubble:nth-child(8) { width:  75px; height:  75px; top:  5%; right: 24%; }
+
+    .hero-watermark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hero-watermark img {
+      position: absolute;
+      opacity: 0.06;
+    }
+    .hero-watermark img:nth-child(1) { width: 140px; top: 5%;  left: 4%; }
+    .hero-watermark img:nth-child(2) { width: 90px;  top: 50%; left: 20%; }
+    .hero-watermark img:nth-child(3) { width: 160px; top: 30%; left: 38%; }
+    .hero-watermark img:nth-child(4) { width: 80px;  top: 65%; left: 8%; }
+    .hero-watermark img:nth-child(5) { width: 110px; top: 15%; left: 55%; }
+
+    .projet-hero::before {
+      content: "";
+      position: absolute;
+      right: 20%;
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(229,9,20,0.35) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .projet-hero__left {
+      flex: 1;
+      z-index: 2;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-badges .badge {
+      font-size: 0.7rem;
+      padding: 6px 16px;
+      flex: none;
+    }
+
+    .projet-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1rem, 1.8vw, 1.5rem);
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      margin: 0;
+      white-space: nowrap;
+      font-size: clamp(1.1rem, 2vw, 1.7rem);
+      z-index: 2;
+      margin-bottom: 14px;
+    }
+
+    .projet-hero__thumbs {
+      display: flex;
+      align-items: center;
+      overflow: visible;
+      height: 100%;
+      flex-shrink: 0;
+      padding: 32px 0;
+      z-index: 1;
+      position: relative;
+    }
+
+    .hero-thumb {
+      height: 300px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      position: relative;
+      z-index: 1;
+      margin-left: -25px;
+    }
+    .hero-thumb:first-child {
+      margin-left: 0;
+    }
+    .hero-thumb:nth-child(1) {
+      transform: rotate(-5deg);
+    }
+    .hero-thumb:nth-child(2) {
+      transform: rotate(1deg);
+      z-index: 2;
+    }
+    .hero-thumb:nth-child(3) {
+      transform: rotate(6deg);
+    }
+
+    /* 3. MAIN CARD */
+    .projet-card {
+      width: 90%;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-sizing: border-box;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(
+        135deg,
+        rgba(180, 20, 20, 0.07) 0%,
+        rgba(8, 8, 32, 0.55) 50%,
+        rgba(20, 20, 90, 0.08) 100%
+      );
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+        0 32px 80px rgba(0, 0, 0, 0.5);
+      padding: 48px;
+    }
+
+    /* BADGES */
+    .projet-badges {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .badge {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 11px 26px;
+      border-radius: 999px;
+      background: transparent;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .badge--blue   {
+      border: 1.5px solid rgba(64, 160, 255, 0.5);
+      color: #fff;
+      background: linear-gradient(145deg, rgba(64, 160, 255, 0.35) 0%, rgba(64, 160, 255, 0.08) 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 12px rgba(64, 160, 255, 0.2);
+    }
+    .badge--red    {
+      border: 1.5px solid rgba(229, 9, 20, 0.5);
+      color: #fff;
+      background: linear-gradient(145deg, rgba(229, 9, 20, 0.35) 0%, rgba(229, 9, 20, 0.08) 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 12px rgba(229, 9, 20, 0.2);
+    }
+    .badge--orange {
+      border: 1.5px solid rgba(220, 130, 30, 0.5);
+      color: #fff;
+      background: linear-gradient(145deg, rgba(220, 130, 30, 0.35) 0%, rgba(220, 130, 30, 0.08) 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 12px rgba(220, 130, 30, 0.2);
+    }
+    .badge--purple {
+      border: 1.5px solid rgba(160, 80, 220, 0.5);
+      color: #fff;
+      background: linear-gradient(145deg, rgba(160, 80, 220, 0.35) 0%, rgba(160, 80, 220, 0.08) 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 12px rgba(160, 80, 220, 0.2);
+    }
+
+    /* 2 COLONNES contexte + missions */
+    .projet-row-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* MINI RECTANGLES */
+    .projet-section {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 24px 28px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.01) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 8px 24px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .projet-section-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 1px 8px rgba(255,255,255,0.3), 0 2px 16px rgba(0,0,0,0.8);
+      margin: 0 0 14px;
+    }
+    .projet-section-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: clamp(15px, 1.6vw, 18px);
+      line-height: 1.75;
+      color: rgba(240, 237, 232, 0.75);
+      margin: 0;
+    }
+
+    /* MES RÉSULTATS pleine largeur */
+    .projet-section--full {
+      margin-top: 0;
+    }
+
+    /* 5. MES CONCEPTS */
+    .concepts-section {
+      width: 90%;
+      max-width: 90%;
+    }
+    .concepts-title {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ffffff;
+      border: 1.5px solid rgba(64, 160, 255, 0.7);
+      background: rgba(64, 160, 255, 0.12);
+      border-radius: 10px;
+      padding: 10px 24px;
+      margin-bottom: 20px;
+    }
+    .concepts-videos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .concepts-video {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 9 / 16;
+    }
+    .concepts-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 4. BACK BUTTON */
+    .projet-back {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(240, 237, 232, 0.8);
+      background: transparent;
+      border: 1.5px solid rgba(240, 237, 232, 0.35);
+      border-radius: 999px;
+      padding: 12px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .projet-back:hover {
+      border-color: rgba(240, 237, 232, 0.75);
+      color: #F0EDE8;
+    }
+
+    /* ── ≤ 1440px : MacBook Pro ── */
+    @media (max-width: 1440px) {
+      .projet-hero { min-height: 36vh; height: 36vh; }
+      .projet-card { width: 92%; max-width: 92%; padding: 36px; }
+      .projet-main { padding-top: 40px; gap: 36px; }
+    }
+
+    /* ── ≤ 1280px : MacBook Air ── */
+    @media (max-width: 1280px) {
+      .projet-hero { min-height: 34vh; height: 34vh; }
+      .projet-card { padding: 32px; }
+      .projet-main { gap: 32px; }
+    }
+
+    /* ── ≤ 1024px : tablette ── */
+    @media (max-width: 1024px) {
+      .projet-hero { height: auto; min-height: auto; padding-bottom: 28px; }
+      .projet-card { padding: 28px; width: 94%; max-width: 94%; }
+    }
+
+    /* ── ≤ 768px : mobile ── */
+    @media (max-width: 768px) {
+      .projet-card { padding: 20px 16px; width: 96%; max-width: 96%; }
+      .projet-badges { flex-wrap: wrap; gap: 8px; }
+      .badge { text-align: center; font-size: 0.75rem; padding: 8px 14px; }
+      .projet-row-2col { grid-template-columns: 1fr; gap: 14px; }
+      .projet-main { padding-top: 24px; gap: 24px; }
+    }
+
+    /* ── ≤ 480px : petit mobile ── */
+    @media (max-width: 480px) {
+      .projet-card { padding: 16px 12px; }
+    }
+  </style>
+</head>
+<body style="padding-top: 0; margin-top: 0;">
+
+  <!-- ══ HEADER ══ -->
+  <header class="header">
+    <div class="header-pill">
+
+    <a href="index.html" class="header-logo">GEOFFREY MORENO</a>
+
+    <nav class="header-nav">
+      <a href="mes-projets.html" class="nav-link">MES PROJETS</a>
+      <a href="mon-parcours.html" class="nav-link">MON PARCOURS</a>
+      <a href="me-contacter.html" class="nav-link">ME CONTACTER</a>
+    </nav>
+
+    <div class="header-socials">
+      <a href="#" class="social-link" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="#" class="social-link" aria-label="TikTok">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.72a8.27 8.27 0 004.84 1.56V6.83a4.85 4.85 0 01-1.07-.14z"/>
+        </svg>
+      </a>
+      <a href="#" class="social-link" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+    </div>
+
+    </div><!-- /.header-pill -->
+  </header>
+
+  <main>
+    <!-- 1. HERO BANNER -->
+    <div class="projet-hero">
+      <!-- Fond Neon Netflix -->
+      <div class="hero-bg"></div>
+
+      <!-- 8 Bulles -->
+      <div class="hero-bubbles">
+        <div class="bubble"><img src="assets/brand-projects/netflix/lancement-netflix.png" alt=""></div>
+        <div class="bubble"><img src="assets/brand-projects/netflix/annonces-netflix.png" alt=""></div>
+        <div class="bubble"><img src="assets/brand-projects/netflix-tiktok-launch/otis-vignette.png" alt=""></div>
+        <div class="bubble"><img src="assets/brand-projects/netflix/evenement-netflix.png" alt=""></div>
+        <div class="bubble"><img src="assets/brand-projects/netflix-tiktok-launch/paola-vignette.png" alt="Paola"></div>
+        <div class="bubble"><img src="assets/brand-projects/netflix/banlieusards.png" alt=""></div>
+        <div class="bubble"><img src="assets/brand-projects/netflix-tiktok-launch/shrek-vignette.png" alt="Shrek"></div>
+        <div class="bubble"><img src="assets/brand-projects/netflix-tiktok-launch/otis-vignette.png" alt="Otis"></div>
+      </div>
+
+      <div class="projet-hero__left">
+        <h1 class="projet-title">Lancement du compte Netflix France sur TikTok</h1>
+      </div>
+
+      <div class="projet-hero__thumbs">
+        <img class="hero-thumb" src="assets/brand-projects/netflix-tiktok-launch/otis-vignette.png" alt="Otis">
+        <img class="hero-thumb" src="assets/brand-projects/netflix-tiktok-launch/shrek-vignette.png" alt="Shrek">
+        <img class="hero-thumb" src="assets/brand-projects/netflix-tiktok-launch/paola-vignette.png" alt="Paola">
+      </div>
+    </div>
+
+    <div class="projet-main">
+
+      <!-- 3. MAIN CARD -->
+      <div class="projet-card">
+
+        <!-- BADGES -->
+        <div class="projet-badges">
+          <span class="badge badge--blue">Agence</span>
+          <span class="badge badge--red">Type de contenu</span>
+          <span class="badge badge--orange">Date</span>
+        </div>
+
+        <!-- CONTEXTE + MES MISSIONS (2 colonnes) -->
+        <div class="projet-row-2col">
+          <div class="projet-section">
+            <p class="projet-section-label">Contexte</p>
+            <p class="projet-section-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+          <div class="projet-section">
+            <p class="projet-section-label">Mes missions</p>
+            <p class="projet-section-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+        </div>
+
+        <!-- MES RÉSULTATS -->
+        <div class="projet-section projet-section--full">
+          <p class="projet-section-label">Mes résultats</p>
+          <p class="projet-section-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 5. MES CONCEPTS -->
+      <div class="concepts-section">
+        <div class="concepts-title">Mes concepts</div>
+        <div class="concepts-videos">
+          <div class="concepts-video">
+            <video src="assets/brand-projects/netflix-tiktok-launch/otis.mp4" poster="assets/brand-projects/netflix-tiktok-launch/otis-vignette.png" controls playsinline></video>
+          </div>
+          <div class="concepts-video">
+            <video src="assets/brand-projects/netflix-tiktok-launch/paola.mp4" poster="assets/brand-projects/netflix-tiktok-launch/shrek-vignette.png" controls playsinline></video>
+          </div>
+          <div class="concepts-video">
+            <video src="assets/brand-projects/netflix-tiktok-launch/squid-game.mp4" poster="assets/brand-projects/netflix-tiktok-launch/paola-vignette.png" controls playsinline></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. BACK BUTTON -->
+      <a class="projet-back" href="index.html#projects">← Retour aux projets</a>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

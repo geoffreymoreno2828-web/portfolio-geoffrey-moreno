@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix France TikTok — Geoffrey Moreno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ══ PAGE PROJET — LAYOUT ══ */
+    .header-pill {
+      width: 55% !important;
+      max-width: 700px !important;
+      margin: 10px auto 0 !important;
+      padding: 4px 16px !important;
+      background: rgba(10, 10, 30, 0.55) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .header-pill .header-logo {
+      font-size: 15px !important;
+    }
+    .header-pill .nav-link {
+      font-size: 12px !important;
+    }
+    .header-pill .social-link svg {
+      width: 16px !important;
+      height: 16px !important;
+    }
+    .projet-hero {
+      width: 100%;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .projet-main {
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 52px;
+      padding-bottom: 100px;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+    }
+
+    /* 1. HERO BANNER */
+    .projet-hero {
+      width: 100%;
+      min-height: 100vh;
+      height: 100vh;
+      background-color: #080810;
+      background:
+        radial-gradient(ellipse 80% 30% at 50% 0%, rgba(229, 9, 20, 0.2) 0%, transparent 100%),
+        radial-gradient(ellipse 40% 100% at 0% 50%, rgba(229, 9, 20, 0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 70% 120% at 75% 50%,
+          rgba(229, 9, 20, 0.6) 0%,
+          rgba(120, 0, 10, 0.3) 40%,
+          rgba(5, 5, 20, 0.95) 100%);
+      box-shadow:
+        inset 0 0 60px rgba(229, 9, 20, 0.25),
+        inset 0 0 120px rgba(229, 9, 20, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6% 0 6%;
+      overflow: visible;
+      position: relative;
+    }
+
+    .projet-hero::before {
+      content: "";
+      position: absolute;
+      right: 20%;
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(229,9,20,0.35) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+
+    /* Watermark logos Netflix */
+    .hero-watermark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hero-watermark img {
+      position: absolute;
+      opacity: 0.14;
+    }
+    .hero-watermark img:nth-child(1) { width: 140px; top: 5%;  left: 4%; }
+    .hero-watermark img:nth-child(2) { width: 90px;  top: 50%; left: 20%; }
+    .hero-watermark img:nth-child(3) { width: 160px; top: 30%; left: 38%; }
+    .hero-watermark img:nth-child(4) { width: 80px;  top: 65%; left: 8%; }
+    .hero-watermark img:nth-child(5) { width: 110px; top: 15%; left: 55%; }
+
+    .projet-hero__left {
+      flex: 1;
+      z-index: 3;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-badges .badge {
+      font-size: 0.7rem;
+      padding: 6px 16px;
+      flex: none;
+    }
+
+    .projet-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.54rem, 2.8vw, 2.38rem);
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      margin: 0;
+      white-space: nowrap;
+      z-index: 2;
+      margin-bottom: 14px;
+    }
+
+    .projet-hero__thumbs {
+      display: flex;
+      align-items: center;
+      overflow: visible;
+      height: 100%;
+      flex-shrink: 0;
+      padding: 32px 0;
+      z-index: 3;
+      position: relative;
+    }
+
+    .hero-thumb {
+      height: 300px;
+      width: 180px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      position: relative;
+      z-index: 1;
+      margin-left: -25px;
+    }
+    .hero-thumb:first-child {
+      margin-left: 0;
+    }
+    .hero-thumb:nth-child(1) {
+      transform: rotate(-5deg);
+    }
+    .hero-thumb:nth-child(2) {
+      transform: rotate(1deg);
+      z-index: 2;
+    }
+    .hero-thumb:nth-child(3) {
+      transform: rotate(6deg);
+    }
+
+    /* 3. MAIN CARD — style bento identique aux petits rectangles */
+    .projet-card {
+      width: 72%;
+      max-width: 72%;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-height: 900px;
+      box-sizing: border-box;
+      overflow: hidden;
+      border-radius: 24px;
+      border: none;
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.45) 0%, rgba(8, 4, 4, 0.98) 50%, rgba(229, 9, 20, 0.35) 100%);
+      position: relative;
+      padding: 48px;
+    }
+    /* Points bento sur le grand rectangle */
+    .projet-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+        circle at center,
+        rgba(229, 9, 20, 0.035) 1px,
+        transparent 1px
+      );
+      background-size: 4px 4px;
+      opacity: 1;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: inherit;
+    }
+    /* Lueur diagonale bento sur le grand rectangle */
+    .projet-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        to bottom right,
+        transparent 20%,
+        rgba(255, 255, 255, 0.04) 45%,
+        rgba(255, 255, 255, 0.07) 50%,
+        rgba(255, 255, 255, 0.04) 55%,
+        transparent 80%
+      );
+      pointer-events: none;
+    }
+    /* S'assurer que le contenu passe au-dessus des pseudo-éléments */
+    .projet-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* BADGES */
+    .projet-badges {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .badge {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 11px 26px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: none;
+      color: #ffffff;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .badge--blue   { color: #fff; }
+    .badge--red    { color: #fff; }
+    .badge--orange { color: #fff; }
+    .badge--purple { color: #fff; }
+
+    /* 2 COLONNES contexte + missions */
+    .projet-row-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding-bottom: 64px;
+    }
+
+    /* MINI RECTANGLES — style bento */
+    .projet-section {
+      position: relative;
+      background: #080808;
+      border: 1px solid rgba(229, 9, 20, 0.3);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* Header: icône + badge statut */
+    .bento-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    .bento-card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+      flex-shrink: 0;
+    }
+    .projet-section:hover .bento-card-icon {
+      background: rgba(229, 9, 20, 0.15);
+    }
+    .bento-card-status {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.07);
+      color: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease;
+    }
+    .projet-section:hover .bento-card-status {
+      background: rgba(255, 255, 255, 0.13);
+    }
+
+    /* Ligne titre + méta */
+    .bento-card-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+    .bento-card-meta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.38);
+    }
+
+    /* Footer: tags + CTA */
+    .bento-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    .bento-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .bento-card-tag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(4px);
+      transition: background 0.2s ease;
+    }
+    .bento-card-tag:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .bento-card-cta {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.38);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+    }
+    .projet-section:hover .bento-card-cta {
+      opacity: 1;
+    }
+    .projet-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+        circle at center,
+        rgba(229, 9, 20, 0.035) 1px,
+        transparent 1px
+      );
+      background-size: 4px 4px;
+      opacity: 1;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: inherit;
+    }
+    .projet-section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        to bottom right,
+        transparent 20%,
+        rgba(255, 255, 255, 0.04) 45%,
+        rgba(255, 255, 255, 0.07) 50%,
+        rgba(255, 255, 255, 0.04) 55%,
+        transparent 80%
+      );
+      pointer-events: none;
+      opacity: 1;
+    }
+    .projet-section:hover {
+      transform: translateY(-4px);
+      border-color: rgba(229, 9, 20, 0.6);
+      box-shadow:
+        0 0 20px rgba(229, 9, 20, 0.12),
+        0 8px 32px rgba(0, 0, 0, 0.6);
+    }
+    @font-face {
+      font-family: 'PoppinsEB';
+      src: url('Police d\'ecriture/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+      font-weight: 800;
+      font-style: normal;
+    }
+    .projet-section-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      height: 100%;
+      justify-content: flex-start;
+    }
+    .projet-section-wrap--full {
+      width: 100%;
+    }
+    .projet-section-label {
+      font-family: 'PoppinsEB', 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1rem, 1.35vw, 1.4rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.60);
+      text-shadow: none;
+      text-align: center;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 8px 20px;
+      border-radius: 14px;
+      background: rgba(229, 9, 20, 0.1);
+      box-shadow: none;
+    }
+    .projet-section-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: clamp(17px, 1.3vw, 20px);
+      line-height: 1.8;
+      color: rgba(245, 242, 238, 0.77);
+      text-align: justify;
+      margin: 20px 0 0 0;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.55),
+        0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .projet-section-text + .projet-section-text {
+      margin-top: 18px;
+    }
+    
+    .projet-missions-list {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: clamp(17px, 1.3vw, 20px);
+      line-height: 1.8;
+      color: rgba(245, 242, 238, 0.77);
+      margin: 20px 0 0 0;
+      padding: 0 32px 0 58px;
+      position: relative;
+      z-index: 1;
+      text-align: justify;
+      list-style-type: disc;
+      flex: 1;
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.55),
+        0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .projet-missions-list li {
+      margin-bottom: 12px;
+      padding-left: 6px;
+    }
+    .projet-missions-list li::marker {
+      color: rgba(229, 9, 20, 0.85);
+    }
+
+    /* MES RÉSULTATS pleine largeur */
+    .projet-section--full {
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .projet-section--empty {
+      min-height: clamp(150px, 16vw, 185px);
+    }
+
+    .projet-section--full.projet-section--empty {
+      min-height: clamp(170px, 18vw, 220px);
+    }
+
+    /* 5. MES CONCEPTS */
+    .concepts-section {
+      width: 90%;
+      max-width: 90%;
+    }
+    .concepts-title {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ffffff;
+      border: 1.5px solid rgba(64, 160, 255, 0.7);
+      background: rgba(64, 160, 255, 0.12);
+      border-radius: 10px;
+      padding: 10px 24px;
+      margin-bottom: 20px;
+    }
+    .concepts-videos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .concepts-video {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 9 / 16;
+    }
+    .concepts-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* BLOC wrapper rangée 2col + séparateur */
+    .separateur-bloc {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0;
+    }
+
+    /* Trait vertical : dégradé rouge, plein au centre, transparent aux extrémités */
+    .separateur-vertical {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      bottom: 0;
+      width: 1.5px;
+      background: linear-gradient(
+        to bottom,
+        rgba(229, 9, 20, 0.0) 0%,
+        rgba(229, 9, 20, 0.55) 50%,
+        rgba(229, 9, 20, 0.0) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Rangée 2col dans le bloc */
+    .separateur-bloc .projet-row-2col {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Ligne horizontale : dégradé rouge, plein au centre, transparent aux bords */
+    .separateur-horizontal {
+      width: calc(100% + 96px);
+      margin-left: -48px;
+      height: 1.5px;
+      margin-top: 0;
+      flex-shrink: 0;
+      background: linear-gradient(
+        to right,
+        rgba(229, 9, 20, 0.0) 0%,
+        rgba(229, 9, 20, 0.55) 50%,
+        rgba(229, 9, 20, 0.0) 100%
+      );
+      box-shadow: none;
+    }
+
+    /* 4. BACK BUTTON */
+    .projet-back {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(240, 237, 232, 0.8);
+      background: transparent;
+      border: 1.5px solid rgba(240, 237, 232, 0.35);
+      border-radius: 999px;
+      padding: 12px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .projet-back:hover {
+      border-color: rgba(240, 237, 232, 0.75);
+      color: #F0EDE8;
+    }
+
+    /* BOUTON BENTO HOVER */
+    .bento-hover-btn {
+      position: relative;
+      display: inline-block;
+      padding: 8px 22px;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      cursor: pointer;
+      overflow: hidden;
+      isolation: isolate;
+      margin-top: 0;
+      margin-bottom: 0;
+      z-index: 1;
+      background: rgba(229, 9, 20, 0.12);
+      box-shadow:
+        inset 0 0 0 1px rgba(229, 9, 20, 0.45),
+        inset 0 0 14px 0 rgba(229, 9, 20, 0.12),
+        inset 0 -3px 10px 0 rgba(229, 9, 20, 0.1),
+        0 2px 8px 0 rgba(0, 0, 0, 0.45),
+        0 4px 16px 0 rgba(229, 9, 20, 0.08);
+      transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
+      border: none;
+    }
+    .bento-card-title-row--meta {
+      margin-bottom: 0;
+    }
+    .bento-card-title-row--meta .bento-card-meta {
+      font-size: 12px;
+    }
+    .bento-hover-btn:hover {
+      background: rgba(229, 9, 20, 0.2);
+      box-shadow:
+        inset 0 0 0 1px rgba(229, 9, 20, 0.7),
+        inset 0 0 20px 0 rgba(229, 9, 20, 0.2),
+        0 4px 20px 0 rgba(229, 9, 20, 0.25),
+        0 8px 30px 0 rgba(0, 0, 0, 0.5);
+      transform: translateY(-1px);
+    }
+    .bento-hover-btn:active {
+      transform: scale(0.975);
+    }
+    .bento-hover-btn .btn-particle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0;
+      background: radial-gradient(circle, rgba(229,9,20,0.9), rgba(180,0,0,0.4));
+      transition: opacity 0.3s ease;
+    }
+    .bento-hover-btn .btn-particle.fade-in  { opacity: 0.7; }
+    .bento-hover-btn .btn-particle.fade-out {
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    /* ── ≤ 1440px : MacBook Pro ── */
+    @media (max-width: 1440px) {
+      .projet-hero {
+        min-height: 46vh;
+        height: 46vh;
+        padding: 0 4%;
+      }
+      .projet-hero::before {
+        width: 400px;
+        height: 400px;
+      }
+      .hero-thumb { height: 240px; width: 144px; }
+      .projet-title { font-size: clamp(1.2rem, 2.4vw, 2rem); }
+      .projet-card { width: 72%; max-width: 72%; padding: 36px; }
+      .separateur-horizontal { width: calc(100% + 72px); margin-left: -36px; }
+      .projet-main { padding-top: 40px; gap: 36px; }
+      .concepts-section { width: 92%; max-width: 92%; }
+    }
+
+    /* ── ≤ 1280px : MacBook Air / petit écran ── */
+    @media (max-width: 1280px) {
+      .projet-hero {
+        min-height: 34vh;
+        height: 34vh;
+        padding: 0 3%;
+      }
+      .hero-thumb { height: 210px; width: 126px; margin-left: -20px; }
+      .projet-title { font-size: clamp(1.1rem, 2.2vw, 1.7rem); }
+      .projet-card { padding: 32px; }
+      .separateur-horizontal { width: calc(100% + 64px); margin-left: -32px; }
+      .projet-main { gap: 32px; }
+    }
+
+    /* ── ≤ 1024px : tablette / hero en colonne ── */
+    @media (max-width: 1024px) {
+      .projet-hero {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        padding: 60px 5% 32px;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .projet-hero::before {
+        width: 300px;
+        height: 300px;
+        right: 10%;
+      }
+      .projet-hero__left { width: 100%; }
+      .projet-hero__thumbs {
+        width: 100%;
+        justify-content: center;
+        padding: 0 0 8px;
+        height: auto;
+      }
+      .hero-thumb { height: 190px; width: 114px; margin-left: -18px; }
+      .projet-title { white-space: normal; font-size: clamp(1.2rem, 3vw, 2rem); }
+      .projet-card { padding: 28px; width: 94%; max-width: 94%; }
+      .separateur-horizontal { width: calc(100% + 56px); margin-left: -28px; }
+      .concepts-section { width: 94%; max-width: 94%; }
+      .projet-row-2col { gap: 16px; }
+    }
+
+    /* ── ≤ 768px : mobile ── */
+    @media (max-width: 768px) {
+      .projet-hero { padding: 56px 4% 24px; gap: 20px; }
+      .hero-thumb { height: 155px; width: 93px; margin-left: -14px; }
+      .hero-thumb:first-child { margin-left: 0; }
+      .projet-title { font-size: clamp(1rem, 4.5vw, 1.5rem); }
+      .projet-card { padding: 20px 16px; width: 96%; max-width: 96%; }
+      .separateur-horizontal { width: calc(100% + 32px); margin-left: -16px; }
+      .projet-badges { flex-wrap: wrap; gap: 8px; }
+      .badge { font-size: 0.75rem; padding: 8px 14px; }
+      .projet-row-2col { grid-template-columns: 1fr; gap: 14px; }
+      .concepts-section { width: 96%; max-width: 96%; }
+      .concepts-videos { grid-template-columns: 1fr; gap: 12px; }
+      .concepts-video { aspect-ratio: 9 / 16; max-width: 280px; margin: 0 auto; }
+      .projet-main { padding-top: 24px; gap: 24px; }
+      .bento-card-header { margin-bottom: 10px; }
+    }
+
+    /* ── ≤ 480px : petit mobile ── */
+    @media (max-width: 480px) {
+      .hero-thumb { height: 120px; width: 72px; }
+      .bento-card-title-row { flex-wrap: wrap; }
+      .bento-hover-btn { font-size: 12px; padding: 6px 16px; }
+      .projet-card { padding: 16px 12px; }
+      .separateur-horizontal { width: calc(100% + 24px); margin-left: -12px; }
+    }
+
+    /* ══ REPRODUCTION CANVA AU PIXEL PRÈS (PUR HTML/CSS) ══ */
+    .stats-canva-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4.5rem; /* Espace vertical exact entre les deux lignes */
+      padding: 3rem 0;
+      width: 100%;
+    }
+
+    .stats-canva-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start; /* Aligne le haut des polices */
+      gap: clamp(1rem, 4vw, 4rem); /* Réduit un peu l'espace horizontal */
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .stats-canva-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stats-canva-item:hover {
+      transform: scale(1.05); /* Petite interaction micro-animation */
+    }
+
+    .stats-canva-value {
+      font-family: 'PoppinsEB', 'Poppins', sans-serif;
+      font-weight: 800; /* H1 compliant */
+      font-size: clamp(2rem, 3.5vw, 3rem); /* Taille plus imposante */
+      color: #FFFFFF;
+      line-height: 1.05; /* Rendu très serré pour "créateurs recommandés" */
+      /* Effet Ombre Portée de Canva (Solid block, sans diffusion) */
+      text-shadow: 4px 4px 0px rgba(120, 120, 120, 0.7);
+      margin-bottom: 0.1rem; /* Très proche du sous-texte */
+      letter-spacing: 0em;
+    }
+
+    .stats-canva-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500; 
+      /* Texte proportionnellement beaucoup plus petit pour matcher l'image */
+      font-size: clamp(0.5rem, 0.75vw, 0.65rem); 
+      color: #AAAAAA; 
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1024px) {
+      .stats-canva-row { gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      .stats-canva-container { gap: 3.5rem; }
+      .stats-canva-row { flex-direction: column; gap: 3.5rem; align-items: center; }
+    }
+  </style>
+</head>
+<body style="padding-top: 0; margin-top: 0;">
+
+  <!-- ══ HEADER ══ -->
+  <header class="header">
+    <div class="header-pill">
+
+    <a href="index.html" class="header-logo">GEOFFREY MORENO</a>
+
+    <nav class="header-nav">
+      <a href="mes-projets.html" class="nav-link">MES PROJETS</a>
+      <a href="mon-parcours.html" class="nav-link">MON PARCOURS</a>
+      <a href="me-contacter.html" class="nav-link">ME CONTACTER</a>
+    </nav>
+
+    <div class="header-socials">
+      <a href="#" class="social-link" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="#" class="social-link" aria-label="TikTok">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.72a8.27 8.27 0 004.84 1.56V6.83a4.85 4.85 0 01-1.07-.14z"/>
+        </svg>
+      </a>
+      <a href="#" class="social-link" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+    </div>
+
+    </div><!-- /.header-pill -->
+  </header>
+
+  <main>
+    <!-- 1. HERO BANNER -->
+    <div class="projet-hero">
+      <!-- Filigrane logos Netflix -->
+      <div class="hero-watermark">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="" style="width:85px; top:15%; left:65%; transform:rotate(-9deg);">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="" style="width:70px; top:55%; left:70%; transform:rotate(5deg);">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="" style="width:100px; top:75%; left:80%; transform:rotate(-6deg);">
+        <img src="https://cdn.simpleicons.org/netflix/E50914" alt="" style="width:60px; top:20%; left:85%; transform:rotate(14deg);">
+      </div>
+      <div class="projet-hero__left">
+        <h1 class="projet-title">Lancement du compte Netflix France sur TikTok</h1>
+        <div class="hero-badges">
+          <span class="badge badge--blue">Agence</span>
+          <span class="badge badge--red">Type de contenu</span>
+          <span class="badge badge--orange">Date</span>
+        </div>
+      </div>
+      <div class="projet-hero__thumbs">
+        <img class="hero-thumb" src="assets/brand-projects/netflix-tiktok-launch/otis-vignette.png" alt="Otis">
+        <img class="hero-thumb" src="assets/brand-projects/netflix-tiktok-launch/shrek-vignette.png" alt="Shrek">
+        <img class="hero-thumb" src="assets/brand-projects/netflix-tiktok-launch/paola-vignette.png" alt="Paola">
+      </div>
+    </div>
+
+    <div class="projet-main">
+
+      <!-- 3. MAIN CARD -->
+      <div class="projet-card">
+
+
+        <!-- BLOC : rangée 2col + trait vertical + trait horizontal -->
+        <div class="separateur-bloc">
+
+          <!-- Trait vertical (dégradé rouge, efface vers haut et bas) -->
+          <div class="separateur-vertical"></div>
+
+          <!-- CONTEXTE + MES MISSIONS (2 colonnes) -->
+          <div class="projet-row-2col">
+
+            <!-- CONTEXTE -->
+            <div class="projet-section-wrap">
+              <div class="projet-section-label" style="background: rgba(229, 9, 20, 0.3); width: 52%; align-self: center; margin-left: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -2px 4px rgba(0,0,0,0.35);">Contexte</div>
+              <p class="projet-section-text">En 2021, Netflix France a confié à l'agence The Source le lancement de son compte TikTok.</p>
+              <p class="projet-section-text">L'objectif était d'avoir un partenaire en capacité de produire du contenu innovant et en phase avec les codes de la plateforme afin de consolider et faire perdurer son image de marque.</p>
+            </div>
+
+            <!-- MES MISSIONS -->
+            <div class="projet-section-wrap">
+              <div class="projet-section-label" style="background: rgba(229, 9, 20, 0.3); width: 52%; align-self: center; margin-right: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -2px 4px rgba(0,0,0,0.35);">Mes Missions</div>
+              <ul class="projet-missions-list">
+                <li>Idéation et production de contenus organiques et publicitaires sur TikTok, Reels, Shorts.</li>
+                <li>Identification et collaboration avec des créateurs.ices de contenus.</li>
+                <li>Conception et gestion de campagnes d'influence innovantes.</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Trait horizontal (dégradé rouge, efface vers les bords) -->
+          <div class="separateur-horizontal"></div>
+
+        </div>
+
+        <!-- MES RÉSULTATS -->
+        <div class="projet-section-wrap projet-section-wrap--full" style="margin-top: 20px;">
+          <div class="projet-section-label" style="align-self: center; width: auto; background: rgba(229, 9, 20, 0.3); box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -2px 4px rgba(0,0,0,0.35);">Mes Résultats</div>
+          
+          <div class="stats-canva-container">
+            <!-- PREMIÈRE LIGNE (3 ÉLÉMENTS) -->
+            <div class="stats-canva-row">
+              <div class="stats-canva-item">
+                <span class="stats-canva-value">Marque n°1</span>
+                <span class="stats-canva-label">SUR TIKTOK EN FRANCE</span>
+              </div>
+              <div class="stats-canva-item">
+                <span class="stats-canva-value">+ 4 millions</span>
+                <span class="stats-canva-label">ABONNÉS GAGNÉS</span>
+              </div>
+              <div class="stats-canva-item">
+                <span class="stats-canva-value">+1.5 milliards</span>
+                <span class="stats-canva-label">DE VUES GÉNÉRÉES</span>
+              </div>
+            </div>
+
+            <!-- DEUXIÈME LIGNE (2 ÉLÉMENTS) -->
+            <div class="stats-canva-row">
+              <div class="stats-canva-item">
+                <span class="stats-canva-value">+200 contenus</span>
+                <span class="stats-canva-label">ADS &amp; ORGANIQUES PRODUITS</span>
+              </div>
+              <div class="stats-canva-item">
+                <span class="stats-canva-value">+400 créateurs<br>recommandés</span>
+                <span class="stats-canva-label">DONT 40 ONT COLLABORÉ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 5. MES CONCEPTS -->
+      <div class="concepts-section">
+        <div class="concepts-title">Mes concepts</div>
+        <div class="concepts-videos">
+          <div class="concepts-video">
+            <video src="assets/brand-projects/netflix-tiktok-launch/otis.mp4" controls playsinline></video>
+          </div>
+          <div class="concepts-video">
+            <video src="assets/brand-projects/netflix-tiktok-launch/paola.mp4" controls playsinline></video>
+          </div>
+          <div class="concepts-video">
+            <video src="assets/brand-projects/netflix-tiktok-launch/squid-game.mp4" controls playsinline></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. BACK BUTTON -->
+      <a class="projet-back" href="index.html#projects">← Retour aux projets</a>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('.bento-hover-btn').forEach(btn => {
+      let isOver = false;
+      let lastTime = 0;
+
+      btn.addEventListener('pointerenter', () => { isOver = true; });
+      btn.addEventListener('pointerleave', () => { isOver = false; });
+
+      btn.addEventListener('pointermove', (e) => {
+        if (!isOver) return;
+        const now = Date.now();
+        if (now - lastTime < 100) return;
+        lastTime = now;
+
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const particle = document.createElement('div');
+        particle.className = 'btn-particle';
+        particle.style.left = x + 'px';
+        particle.style.top  = y + 'px';
+        btn.appendChild(particle);
+
+        requestAnimationFrame(() => particle.classList.add('fade-in'));
+
+        setTimeout(() => {
+          particle.classList.remove('fade-in');
+          particle.classList.add('fade-out');
+        }, 1000);
+
+        setTimeout(() => particle.remove(), 2200);
+      });
+    });
+  </script>
+</body>
+</html>
